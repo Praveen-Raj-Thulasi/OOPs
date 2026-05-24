@@ -15,7 +15,7 @@ class LibraryController{
         int choice = view.getMenu();
 
         do{
-            choice = view.getMenu();
+            
 
             switch(choice){
 
@@ -52,7 +52,7 @@ class LibraryController{
                 default:
                     view.showMessage("Invalid choice");
                 }
-
+            choice = view.getMenu();
         }while(choice != 6);
         
     }
