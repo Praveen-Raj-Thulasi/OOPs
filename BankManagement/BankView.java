@@ -11,6 +11,7 @@ class BankView{
         System.out.println("2. Search account");
         System.out.println("3. Delete account");
         System.out.println("4. Exit");
+        System.out.println("Enter choice : ");
 
         return sc.nextInt();
     }
@@ -18,12 +19,13 @@ class BankView{
     public int showUserMenu(){
 
         System.out.println("------Banking System------");
-        System.out.println("1. Add account");
+        System.out.println("1. Create account");
         System.out.println("2. Display account details");
         System.out.println("3. Check balance");
         System.out.println("4. Deposit");
         System.out.println("5. Withdraw");
         System.out.println("6. Exit");
+        System.out.println("Enter choice : ");
 
         return sc.nextInt();
     }
@@ -34,6 +36,7 @@ class BankView{
         System.out.println("1. Admin");
         System.out.println("2. User");
         System.out.println("3. Exit");
+        System.out.println("Enter choice : ");
 
         return sc.nextInt();
     }
@@ -89,16 +92,4 @@ class BankView{
 
     }
 
-    // public User getUserDetails(){
-
-    //     System.out.print("Enter username : ");
-    //     String username = sc.next();
-
-    //     System.out.print("Enter password : ");
-    //     String password = sc.next();
-
-    //     User user = new User(username, password);
-
-    //     return user;
-    // }
 }

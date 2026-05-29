@@ -1,6 +1,6 @@
+import database.DBConnection;
 import java.sql.*;
 import java.util.*;
-
 
 class BankController{
 
@@ -11,19 +11,13 @@ class BankController{
     BankView view = new BankView();
 
     public void start(){
+
         int choice = view.showLoginMenu();
 
-        // User user = view.getUserDList<User> users = new ArrayList<>(
-                //     Arrays.asList(
-                //         new User("Jack", "2342"),
-                //         new User("Nicole", "1234")
-                //     )
-                // );etails();
-
-        if(choice == 1 /*&& (user.getName().equalsIgnoreCase("admin") && user.getPassword().equals("1234"))*/){
+        if(choice == 1){
 
             do{
-                view.showMessage("Enter choice : ");
+                
                 choice = view.showAdminMenu();
 
                     switch(choice){
@@ -62,27 +56,8 @@ class BankController{
 
             do{
 
-                // List<User> users = new ArrayList<>(
-                //     Arrays.asList(
-                //         new User("Jack", "2342"),
-                //         new User("Nicole", "1234")
-                //     )
-                // );
-
-                // 
-
-                // if(!users.contains(user)){
-                //     view.showMessage("No user found");
-                //     break;
-                // }
-                
-                // else if(users.get(us){
-
-                // }
-
                 Account account = null;
 
-                view.showMessage("Enter choice : ");
                 choice = view.showUserMenu();
 
                 switch(choice){
@@ -100,7 +75,7 @@ class BankController{
                         break;
 
                     case 3:
-                        view.showMessage("Enter id ; ");
+                        view.showMessage("Enter id : ");
                         id = view.getInput();
 
                         account = searchAccount(id);
@@ -111,7 +86,7 @@ class BankController{
                         view.showMessage("Enter amount : ");
                         int amount = view.getInput();
 
-                        view.showMessage("Enter id ; ");
+                        view.showMessage("Enter id : ");
                         id = view.getInput();
 
                         Deposit(searchAccount(id), amount);
@@ -121,7 +96,7 @@ class BankController{
                         view.showMessage("Enter amount : ");
                         amount = view.getInput();
 
-                        view.showMessage("Enter id ; ");
+                        view.showMessage("Enter id : ");
                         id = view.getInput();
 
                         Withdraw(searchAccount(id), amount);
@@ -147,9 +122,6 @@ class BankController{
     }
     
     public void Withdraw(Account account, int amount){
-        // if(account.getBalance() >= amount){
-        //     account.setBalance(-amount);
-        // }
 
         try{
             PreparedStatement ps = con.prepareStatement("update account set balance = ? where id = ?");
@@ -171,11 +143,7 @@ class BankController{
     }
 
     public void Deposit(Account account, int amount){
-        // if(amount > 0){
-        //     account.setBalance(amount);
-        //     view.showMessage("Updated Balance : ");
-        //     view.showBalance(account.getBalance());
-        // }
+       
         try{
             PreparedStatement ps = con.prepareStatement("update account set balance = ? where id = ?");
             ps.setInt(1, account.getBalance() + amount);
@@ -197,7 +165,6 @@ class BankController{
     
     public List<Account> getAccounts(){
         List<Account> accounts = new ArrayList<>();
-
 
         try{
             PreparedStatement ps = con.prepareStatement("select * from account");
@@ -222,8 +189,7 @@ class BankController{
     }
 
     public void deleteAccount(int id){
-        // Account account = searchAccount(id);
-        
+
         try{
             PreparedStatement ps = con.prepareStatement("delete from account where id = ?");
             ps.setInt(1, id);
@@ -231,8 +197,11 @@ class BankController{
             int rows = ps.executeUpdate();
 
             if(rows > 0){
-                view.showMessage("account Deleted successfully");
+                view.showMessage("Account deleted successfully");
                 return;
+            }
+            else{
+                view.showMessage("Account not found");
             }
 
         }
