@@ -6,7 +6,16 @@ class User{
         this.name = name;
         this.password = password;
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getPassword(){
+        return password;
+    }
 }
+
 class Account{
     private int id;
     private String name;
@@ -14,6 +23,11 @@ class Account{
 
     Account(int id, String name, int balance){
         this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+
+    Account(String name, int balance){
         this.name = name;
         this.balance = balance;
     }
@@ -28,6 +42,14 @@ class Account{
 
     public int getBalance(){
         return balance;
+    }
+
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public void setBalance(int amount){
