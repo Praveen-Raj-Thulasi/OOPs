@@ -18,11 +18,12 @@ class BankView{
     public int showUserMenu(){
 
         System.out.println("------Banking System------");
-        System.out.println("1. Display account details");
-        System.out.println("2. Check balance");
-        System.out.println("3. Deposit");
-        System.out.println("4. Withdraw");
-        System.out.println("5. Exit");
+        System.out.println("1. Add account");
+        System.out.println("2. Display account details");
+        System.out.println("3. Check balance");
+        System.out.println("4. Deposit");
+        System.out.println("5. Withdraw");
+        System.out.println("6. Exit");
 
         return sc.nextInt();
     }
@@ -50,18 +51,54 @@ class BankView{
     }
 
     public void displayAccount(Account account){
+
         System.out.println("Id : " + account.getId() + " | Name : " + account.getName() + " | Balance : "+ account.getBalance());
+
     }
 
     public void showMessage(String msg){
+
         System.out.println(msg);
+
     }
 
-    public int getAmount(){
-        return sc.nextInt();
+    public void showMessage(Exception e){
+        System.out.println(e);
     }
+
+    public int getInput(){
+        return sc.nextInt();
+
+    }
+
+    public Account getAccountDetails(){
+
+        System.out.print("Enter name : ");
+        String name = sc.next();
+
+        System.out.print("Enter balance : ");
+        int balance = sc.nextInt();
+
+        Account account = new Account(name, balance);
+
+        return account;
+    } 
 
     public void showBalance(int balance){
         System.out.println("Balance : " + balance);
+
     }
+
+    // public User getUserDetails(){
+
+    //     System.out.print("Enter username : ");
+    //     String username = sc.next();
+
+    //     System.out.print("Enter password : ");
+    //     String password = sc.next();
+
+    //     User user = new User(username, password);
+
+    //     return user;
+    // }
 }
